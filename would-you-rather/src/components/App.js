@@ -3,6 +3,7 @@ import "../App.css";
 import Nav from "./Nav";
 import Home from "./Home";
 import NewQuestion from "./NewQuestion";
+import Leaderboard from "./Leaderboard";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -16,6 +17,7 @@ class App extends Component {
             <div>
               <Route path="/" exact component={Home} />
               <Route path="/newQuestion" exact component={NewQuestion} />
+              <Route path="/leaderboard" exact component={Leaderboard} />
             </div>
           </header>
         </div>
