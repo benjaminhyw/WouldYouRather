@@ -2,8 +2,7 @@ let users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
-    avatarURL:
-      "http://assets2.ignimgs.com/2014/06/22/korra-book-two-blu-1280jpg-b68bbe_1280w.jpg",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -15,8 +14,7 @@ let users = {
   tylermcginnis: {
     id: "tylermcginnis",
     name: "Tyler McGinnis",
-    avatarURL:
-      "https://ih1.redbubble.net/image.412709073.7698/ap,550x550,12x16,1,transparent,t.png",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/tyler.jpg",
     answers: {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo"
@@ -26,7 +24,8 @@ let users = {
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "https://i.gifer.com/SsgL.gif",
+    avatarURL:
+      "https://scontent.fsea1-1.fna.fbcdn.net/v/t1.0-9/13428532_245921485788932_8000981823304167040_n.jpg?_nc_cat=111&_nc_ht=scontent.fsea1-1.fna&oh=29871a3d3f799c3fcd9aa412b87ac646&oe=5CEFC810",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
