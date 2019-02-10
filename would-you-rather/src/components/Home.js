@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Login from "./Login";
 
-export default class Home extends Component {
+class Home extends Component {
   render() {
     return (
       <div>
@@ -11,3 +12,11 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps({ users }) {
+  return {
+    users
+  };
+}
+
+export default connect(mapStateToProps)(Home);
