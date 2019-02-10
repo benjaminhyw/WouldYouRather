@@ -37,3 +37,9 @@ li {
 .center {
   text-align: center;
 }
+
+.avatar {
+  height: 50px;
+  border-radius: 25px;
+  margin: 10px;
+}
