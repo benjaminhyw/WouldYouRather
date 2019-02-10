@@ -45,9 +45,9 @@ li {
 }
 
 .avatar {
-  height: 50px;
-  border-radius: 25px;
-  margin: 10px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 15px;
 }
 
 .flexbox {
@@ -61,13 +61,13 @@ li {
 .questionHeader {
   display: flex;
   background-color: rgba(128, 128, 128, 0.2);
-  padding: 10px;
+  padding: 10px 15px;
+  font-size: 120%;
 }
 
 .question {
   width: 100%;
   max-width: 590px;
-  padding: 10px;
   margin: 0 auto;
   border: 1px solid #dad7d7;
   border-radius: 3px;
