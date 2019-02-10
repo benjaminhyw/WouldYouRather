@@ -16,11 +16,7 @@ class Question extends Component {
         <div className="flexbox">
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
           <div className="questionWrapper">
-            <div>Would you rather...</div>
-            <div>...{optionOne.text}...</div>
-            <Link to={`/questionPage/${id}`}>
-              <button className="btn">View Poll</button>
-            </Link>
+            {this.props.questionDisplay(question)}
             <div />
           </div>
         </div>
@@ -29,14 +25,18 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps(
+  { authedUser, users, questions },
+  { id, questionDisplay }
+) {
   const question = questions[id];
 
   return {
     authedUser,
     question: question
       ? formatQuestion(question, users[question.author], authedUser)
-      : null
+      : null,
+    questionDisplay
   };
 }
 
