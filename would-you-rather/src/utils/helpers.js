@@ -1,6 +1,6 @@
 export function formatQuestion(question, author, authedUser) {
   const { id, timestamp, optionOne, optionTwo } = question;
-  const { name } = author;
+  const { name, avatarURL } = author;
   //   const { optionOneVotes, optionOneText } = optionOne;
   //   const { optionTwoVotes, optionTwoText } = optionTwo;
   // const { name, avatarURL, answers, questions } = author;
@@ -10,7 +10,7 @@ export function formatQuestion(question, author, authedUser) {
     id,
     timestamp,
     optionOne,
-    optionTwo
-    // avatar: avatarURL
+    optionTwo,
+    avatar: avatarURL
   };
 }
