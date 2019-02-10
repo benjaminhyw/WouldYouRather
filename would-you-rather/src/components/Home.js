@@ -14,7 +14,7 @@ class Home extends Component {
             <div>Unanswered</div>
             <div>Answered</div>
           </div>
-          <ul className="dashboard-list">
+          <ul>
             {this.props.questionIds.map(questionId => {
               return (
                 <li key={questionId}>
