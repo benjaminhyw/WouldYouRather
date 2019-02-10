@@ -73,8 +73,15 @@ li {
   border-radius: 3px;
 }
 
+.divider {
+  margin: 10px auto;
+  border: 1px solid rgba(128, 128, 128, 0.2);
+}
+
 .questionWrapper {
   display: flex;
   justify-content: center;
+  align-self: center;
   width: 100%;
+  height: 100%;
 }

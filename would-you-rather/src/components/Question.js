@@ -15,6 +15,7 @@ class Question extends Component {
         <div className="questionHeader">{name} asks:</div>
         <div className="flexbox">
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+          <div className="divider" />
           <div className="questionWrapper">
             {this.props.questionDisplay(question)}
             <div />
