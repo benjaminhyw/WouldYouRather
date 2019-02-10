@@ -21,6 +21,14 @@ export default function Nav() {
           </NavLink>
         </li>
       </ul>
+      <ul>
+        <li>Hello, USER</li>
+        <li>
+          <NavLink to="/" exact activeClassName="active">
+            Logout
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 }
