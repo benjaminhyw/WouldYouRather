@@ -7,6 +7,9 @@ class Home extends Component {
     return (
       <div>
         <h3 className="center">Home</h3>
+        {this.props.users.map(user => {
+          return <p key={user}>{user}</p>;
+        })}
         <Login />
       </div>
     );
@@ -15,7 +18,7 @@ class Home extends Component {
 
 function mapStateToProps({ users }) {
   return {
-    users
+    users: Object.keys(users)
   };
 }
 
