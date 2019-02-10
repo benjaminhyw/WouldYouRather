@@ -7,21 +7,23 @@ import { Link } from "react-router-dom";
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h3 className="center">Home</h3>
-        <ul className="dashboard-list">
-          {this.props.userIds.map(userId => {
-            return <p key={userId}>{userId}</p>;
-          })}
-
-          {this.props.questionIds.map(questionId => {
-            return (
-              <li key={questionId}>
-                <Question id={questionId} questionDisplay={QuestionSnippet} />
-              </li>
-            );
-          })}
-        </ul>
+      <div className="center">
+        <h3>Home</h3>
+        <div>
+          <div>
+            <div>Unanswered</div>
+            <div>Answered</div>
+          </div>
+          <ul className="dashboard-list">
+            {this.props.questionIds.map(questionId => {
+              return (
+                <li key={questionId}>
+                  <Question id={questionId} questionDisplay={QuestionSnippet} />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
         <Login />
       </div>
     );
