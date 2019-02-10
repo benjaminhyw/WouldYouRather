@@ -12,7 +12,7 @@ class Question extends Component {
     const { id, name, avatar, optionOne, optionTwo } = question;
     return (
       <div className="question">
-        <p>{name} asks:</p>
+        <div className="questionHeader">{name} asks:</div>
         <div className="flexbox">
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
           <div className="questionWrapper">
