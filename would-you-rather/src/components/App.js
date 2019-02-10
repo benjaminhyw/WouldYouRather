@@ -1,13 +1,20 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
 import "../App.css";
+
+import { handleInitialData } from "../actions/shared";
+
 import Nav from "./Nav";
 import Home from "./Home";
 import NewQuestion from "./NewQuestion";
 import Leaderboard from "./Leaderboard";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
+
   render() {
     return (
       <Router>
@@ -26,4 +33,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  };
+}
+
+export default connect(mapStateToProps)(App);
