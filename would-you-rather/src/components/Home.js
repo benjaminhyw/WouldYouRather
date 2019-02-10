@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Login from "./Login";
 import Question from "./Question";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   render() {
@@ -16,7 +17,7 @@ class Home extends Component {
           {this.props.questionIds.map(questionId => {
             return (
               <li key={questionId}>
-                <Question id={questionId} />
+                <Question id={questionId} questionDisplay={QuestionSnippet} />
               </li>
             );
           })}
@@ -25,6 +26,18 @@ class Home extends Component {
       </div>
     );
   }
+}
+
+function QuestionSnippet(question) {
+  return (
+    <div>
+      <div>Would you rather...</div>
+      <div>...{question.optionOne.text}...</div>
+      <Link to={`/questionPage/${question.id}`}>
+        <button className="btn">View Poll</button>
+      </Link>
+    </div>
+  );
 }
 
 function mapStateToProps({ users, questions }) {
