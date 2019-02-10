@@ -14,11 +14,12 @@ export function formatQuestion(question, author, authedUser) {
 
 export function formatUser(user, authedUser) {
   const { id, name, avatarURL, answers, questions } = user;
+  let formattedAnswers = Object.entries(answers);
 
   return {
     id,
     name,
-    answers,
+    answers: formattedAnswers,
     questions,
     avatar: avatarURL
   };
