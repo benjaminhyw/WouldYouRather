@@ -70,7 +70,8 @@ li {
   font-size: 120%;
 }
 
-.question {
+.question,
+.user {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;

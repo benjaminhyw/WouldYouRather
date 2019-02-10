@@ -11,7 +11,17 @@ class User extends Component {
     }
     const { id, name, answers, questions, avatar } = user;
 
-    return <div>{name}</div>;
+    return (
+      <div className="user">
+        <div className="flexbox">
+          <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+          <div className="divider" />
+          <div>SECOND USER SECTION</div>
+          <div className="divider" />
+          <div>THIRD USER SECTION</div>
+        </div>
+      </div>
+    );
   }
 }
 
