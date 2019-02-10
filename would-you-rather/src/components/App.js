@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="container">
           <Nav />
           <header className="App-header">
             <div>
