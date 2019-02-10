@@ -10,15 +10,24 @@ class User extends Component {
       return <p>This user doesn't exist</p>;
     }
     const { id, name, answers, questions, avatar } = user;
+    let answersLength = answers.length > 0 ? answers.length : 0;
+    let questionsLength = questions.length > 0 ? questions.length : 0;
 
     return (
       <div className="user">
         <div className="flexbox">
           <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
           <div className="divider" />
-          <div>SECOND USER SECTION</div>
+          <div>
+            <div>{name}</div>
+            <div>Answered Questions: {answersLength}</div>
+            <div>Created Questions: {questionsLength}</div>
+          </div>
           <div className="divider" />
-          <div>THIRD USER SECTION</div>
+          <div>
+            <div>Score</div>
+            <div>{(answersLength + questionsLength).toString()}</div>
+          </div>
         </div>
       </div>
     );
