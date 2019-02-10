@@ -13,10 +13,14 @@ function QuestionPoll(question) {
   return (
     <div>
       <div>Would you rather...</div>
-      <div>...{question.optionOne.text}...</div>
-      <div>OR</div>
-      <div>...{question.optionTwo.text}...</div>
-      <button className="btn">Submit</button>
+      <form>
+        <input type="radio" value={question.optionOne.text} />
+        {question.optionOne.text}
+        <br />
+        <input type="radio" value={question.optionTwo.text} />
+        {question.optionTwo.text} <br />
+        <button className="btn">Submit</button>
+      </form>
     </div>
   );
 }
