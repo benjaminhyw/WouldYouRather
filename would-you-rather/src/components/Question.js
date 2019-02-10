@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Question extends Component {
   render() {
@@ -18,7 +18,9 @@ class Question extends Component {
           <div className="questionWrapper">
             <div>Would you rather...</div>
             <div>...{optionOne.text}...</div>
-            <button className="btn">View Poll</button>
+            <Link to={`/questionPage/${id}`}>
+              <button className="btn">View Poll</button>
+            </Link>
             <div />
           </div>
         </div>
