@@ -8,17 +8,19 @@ class Home extends Component {
     return (
       <div>
         <h3 className="center">Home</h3>
-        {this.props.userIds.map(userId => {
-          return <p key={userId}>{userId}</p>;
-        })}
+        <ul className="dashboard-list">
+          {this.props.userIds.map(userId => {
+            return <p key={userId}>{userId}</p>;
+          })}
 
-        {this.props.questionIds.map(questionId => {
-          return (
-            <li key={questionId}>
-              <Question id={questionId} />
-            </li>
-          );
-        })}
+          {this.props.questionIds.map(questionId => {
+            return (
+              <li key={questionId}>
+                <Question id={questionId} />
+              </li>
+            );
+          })}
+        </ul>
         <Login />
       </div>
     );
