@@ -7,7 +7,9 @@ class Leaderboard extends Component {
     return (
       <div>
         <h3 className="center">Leaderboard</h3>
-        <User />
+        {this.props.userIds.map(userId => {
+          return <User id={userId} />;
+        })}
       </div>
     );
   }
