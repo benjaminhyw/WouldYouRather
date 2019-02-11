@@ -14,10 +14,10 @@ class Leaderboard extends Component {
           <div>
             <h3 className="center">Leaderboard</h3>
             <ul>
-              {this.props.userIds.map(userId => {
+              {this.scoreSort().map(user => {
                 return (
-                  <li key={userId}>
-                    <User id={userId} />
+                  <li key={user.id}>
+                    <User id={user.id} />
                   </li>
                 );
               })}
@@ -28,6 +28,32 @@ class Leaderboard extends Component {
     );
   }
 
+  scoreSort() {
+    let userObjArr = this.props.userIds.map(userId => {
+      return this.props.users[userId];
+    });
+
+    userObjArr.sort(this.compare);
+
+    return userObjArr;
+  }
+
+  compare(a, b) {
+    let aAnswers = Object.entries(a.answers);
+    let bAnswers = Object.entries(b.answers);
+
+    const scoreA = aAnswers.length + a.questions.length;
+    const scoreB = bAnswers.length + b.questions.length;
+
+    let comparison = 0;
+    if (scoreA > scoreB) {
+      comparison = 1;
+    } else if (scoreA < scoreB) {
+      comparison = -1;
+    }
+    return comparison * -1;
+  }
+
   submit = event => {
     this.props.dispatch(loginUser(event.userId));
   };
@@ -36,7 +62,8 @@ class Leaderboard extends Component {
 function mapStateToProps({ users, authedUser }) {
   return {
     userIds: Object.keys(users),
-    authedUser
+    authedUser,
+    users
   };
 }
 
