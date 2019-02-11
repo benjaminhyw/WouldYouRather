@@ -6,6 +6,16 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../actions/shared";
 
 class Home extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      unansweredTabIsActive: true
+    }
+    this.activateUnansweredTab = this.activateUnansweredTab.bind(this);
+    this.activateAnsweredTab = this.activateAnsweredTab.bind(this);
+  }
+
   render() {
     return (
       <div className="center">
@@ -16,8 +26,8 @@ class Home extends Component {
             <h3>Home</h3>
             <div className="questionList">
               <div className="questionListTabs">
-                <div>Unanswered</div>
-                <div>Answered</div>
+                <div className={this.state.unansweredTabIsActive ? "questionListActiveTab" : ""} onClick={this.activateUnansweredTab}>Unanswered</div>
+                <div className={this.state.unansweredTabIsActive ? "" : "questionListActiveTab"} onClick={this.activateAnsweredTab}>Answered</div>
               </div>
               <ul>
                 {this.props.questionIds.map(questionId => {
@@ -36,6 +46,18 @@ class Home extends Component {
         )}
       </div>
     );
+  }
+
+  activateUnansweredTab() {
+    this.setState({
+      unansweredTabIsActive: true
+    })
+  }
+
+  activateAnsweredTab() {
+    this.setState({
+      unansweredTabIsActive: false
+    })
   }
 
   submit = event => {
