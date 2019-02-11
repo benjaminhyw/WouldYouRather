@@ -74,6 +74,20 @@ li {
   font-size: 120%;
 }
 
+.questionList{
+  width: 100%;
+  max-width: 690px;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}
+
+.questionListTabs{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
 .question,
 .user,
 .login {

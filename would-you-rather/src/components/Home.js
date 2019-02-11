@@ -14,8 +14,8 @@ class Home extends Component {
         ) : (
           <div>
             <h3>Home</h3>
-            <div>
-              <div>
+            <div className="questionList">
+              <div className="questionListTabs">
                 <div>Unanswered</div>
                 <div>Answered</div>
               </div>
