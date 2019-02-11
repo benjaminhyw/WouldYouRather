@@ -24,7 +24,7 @@ class App extends Component {
           <header className="App-header">
             <div>
               <Route path="/" exact component={Home} />
-              <Route path="/newQuestion" exact component={NewQuestion} />
+              <Route path="/add" exact component={NewQuestion} />
               <Route path="/questionPage/:id" exact component={QuestionPage} />
               <Route path="/leaderboard" exact component={Leaderboard} />
             </div>
