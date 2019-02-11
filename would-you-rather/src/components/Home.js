@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Login from "./Login";
+import LoginForm from "./Login";
 import Question from "./Question";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ class Home extends Component {
     return (
       <div className="center">
         {!this.props.authedUser ? (
-          <Login />
+          <LoginForm />
         ) : (
           <div>
             <h3>Home</h3>
