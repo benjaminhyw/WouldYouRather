@@ -1,5 +1,5 @@
 import { getInitialData } from "../utils/api";
-import { setAuthedUser } from "../actions/authedUser";
+import { setAuthedUser, logout } from "../actions/authedUser";
 import { receiveUsers } from "../actions/users";
 import { receiveQuestions } from "../actions/questions";
 
@@ -16,5 +16,10 @@ export function handleInitialData() {
 export function loginUser(authed_id) {
   return dispatch => {
     return dispatch(setAuthedUser(authed_id));
+  };
+}
+export function logoutUser() {
+  return dispatch => {
+    return dispatch(logout);
   };
 }
