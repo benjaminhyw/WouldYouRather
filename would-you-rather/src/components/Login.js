@@ -9,18 +9,18 @@ class LoginForm extends Component {
     const { handleSubmit } = this.props; // might change to locally defined
 
     return (
-      <div className="center">
+      <div className="center login">
         <h3>Login</h3>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="loginField">
             <Field
               name="userId"
+              placeholder="Select User"
               component={Dropdown}
-              type="text"
               options={this.props.userIds}
             />
+            <button>Submit</button>
           </div>
-          <button>Submit</button>
         </form>
       </div>
     );
