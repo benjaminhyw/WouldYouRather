@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
-import { loginUser } from "../actions/shared";
+import { loginUser, submitNewQuestion } from "../actions/shared";
 import NewQuestionForm from "../components/NewQuestionForm";
 
 class NewQuestionPage extends Component {
@@ -11,7 +11,7 @@ class NewQuestionPage extends Component {
         {!this.props.authedUser ? (
           <LoginForm onSubmit={this.submitLogin} />
         ) : (
-          <NewQuestionForm />
+          <NewQuestionForm onSubmit={this.submitNewQuestion} />
         )}
       </div>
     );
@@ -19,6 +19,10 @@ class NewQuestionPage extends Component {
 
   submitLogin = event => {
     this.props.dispatch(loginUser(event.userId));
+  };
+
+  submitNewQuestion = event => {
+    this.props.dispatch(submitNewQuestion(event));
   };
 }
 
