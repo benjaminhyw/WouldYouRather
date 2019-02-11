@@ -61,24 +61,22 @@ function QuestionResults(question) {
   return (
     <div>
       <h3>Results:</h3>
-      <div>
-        <div>{question.optionOne.text}</div>
-        <div>
-          <div>
-            {calculatePercentage(question.optionOne.votes.length, totalVotes)}
-          </div>
-          <div>
-            {question.optionOne.votes.length} out of {totalVotes} votes
-          </div>
-        </div>
-      </div>
-      <div>{question.optionTwo.text}</div>
+      {singleQuestionResult(question.optionOne, totalVotes)}
+      {singleQuestionResult(question.optionTwo, totalVotes)}
+    </div>
+  );
+}
+
+function singleQuestionResult(questionOption, totalVotes) {
+  return (
+    <div>
+      <div>{questionOption.text}</div>
       <div>
         <div>
-          {calculatePercentage(question.optionTwo.votes.length, totalVotes)}
+          {calculatePercentage(questionOption.votes.length, totalVotes)}
         </div>
         <div>
-          {question.optionTwo.votes.length} out of {totalVotes}votes
+          {questionOption.votes.length} out of {totalVotes} votes
         </div>
       </div>
     </div>
