@@ -3,8 +3,6 @@ import { setAuthedUser } from "../actions/authedUser";
 import { receiveUsers } from "../actions/users";
 import { receiveQuestions } from "../actions/questions";
 
-const AUTHED_ID = "tylermcginnis";
-
 export function handleInitialData() {
   return dispatch => {
     return getInitialData().then(({ users, questions }) => {
@@ -12,5 +10,11 @@ export function handleInitialData() {
       dispatch(receiveQuestions(questions));
       // dispatch(setAuthedUser(AUTHED_ID));
     });
+  };
+}
+
+export function loginUser(authed_id) {
+  return dispatch => {
+    return dispatch(setAuthedUser(authed_id));
   };
 }
