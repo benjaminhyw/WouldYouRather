@@ -9,7 +9,7 @@ class Leaderboard extends Component {
     return (
       <div>
         {!this.props.authedUser ? (
-          <LoginForm onSubmit={this.submit} />
+          <LoginForm onSubmit={this.submitLogin} />
         ) : (
           <div>
             <h3 className="center">Leaderboard</h3>
@@ -54,7 +54,7 @@ class Leaderboard extends Component {
     return comparison * -1;
   }
 
-  submit = event => {
+  submitLogin = event => {
     this.props.dispatch(loginUser(event.userId));
   };
 }

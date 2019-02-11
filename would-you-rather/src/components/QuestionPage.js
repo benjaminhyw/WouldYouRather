@@ -14,7 +14,7 @@ class QuestionPage extends Component {
     return (
       <div>
         {!this.props.authedUser ? (
-          <LoginForm onSubmit={this.submit} />
+          <LoginForm onSubmit={this.submitLogin} />
         ) : (
           <Question id={this.props.id} questionDisplay={QuestionDisplay} />
         )}
@@ -22,7 +22,7 @@ class QuestionPage extends Component {
     );
   }
 
-  submit = event => {
+  submitLogin = event => {
     this.props.dispatch(loginUser(event.userId));
   };
 }
