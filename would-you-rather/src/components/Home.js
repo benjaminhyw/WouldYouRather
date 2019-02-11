@@ -41,18 +41,16 @@ class Home extends Component {
 
   render() {
     let answeredQuestionIds = this.props.answeredQuestionIds;
-    answeredQuestionIds &&
-      (answeredQuestionIds = this.timestampSort(answeredQuestionIds));
     let unansweredQuestionIds = [...this.props.questionIds];
-    answeredQuestionIds &&
-      answeredQuestionIds.forEach(answeredQuestionId => {
-        unansweredQuestionIds.splice(
-          unansweredQuestionIds.indexOf(answeredQuestionId),
-          1
-        );
-      });
+
+    unansweredQuestionIds = unansweredQuestionIds.filter(function(e) {
+      return answeredQuestionIds && !answeredQuestionIds.includes(e);
+    });
+
     unansweredQuestionIds &&
       (unansweredQuestionIds = this.timestampSort(unansweredQuestionIds));
+    answeredQuestionIds &&
+      (answeredQuestionIds = this.timestampSort(answeredQuestionIds));
 
     return (
       <div className="center">
