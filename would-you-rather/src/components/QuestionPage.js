@@ -11,7 +11,7 @@ class QuestionPage extends Component {
         {!this.props.authedUser ? (
           <LoginForm onSubmit={this.submit} />
         ) : (
-          <Question id={this.props.id} questionDisplay={QuestionPoll} />
+          <Question id={this.props.id} questionDisplay={QuestionDisplay} />
         )}
       </div>
     );
@@ -21,20 +21,25 @@ class QuestionPage extends Component {
     this.props.dispatch(loginUser(event.userId));
   };
 }
-
-function QuestionPoll(question) {
+function QuestionDisplay(question) {
   return (
     <div>
       <div>Would you rather...</div>
-      <form>
-        <input type="radio" value={question.optionOne.text} />
-        {question.optionOne.text}
-        <br />
-        <input type="radio" value={question.optionTwo.text} />
-        {question.optionTwo.text} <br />
-        <button className="btn">Submit</button>
-      </form>
+      {QuestionPoll(question)}
     </div>
+  );
+}
+
+function QuestionPoll(question) {
+  return (
+    <form>
+      <input type="radio" value={question.optionOne.text} />
+      {question.optionOne.text}
+      <br />
+      <input type="radio" value={question.optionTwo.text} />
+      {question.optionTwo.text} <br />
+      <button className="btn">Submit</button>
+    </form>
   );
 }
 
