@@ -27,10 +27,7 @@ class QuestionPage extends Component {
   };
 }
 function QuestionDisplay(question) {
-  // let questionObj = this.props && this.props.questions[this.props.id];
   let userObj = this.props.users[this.props.authedUser];
-  console.log(userObj);
-  console.log(question);
 
   return (
     <div>
