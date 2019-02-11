@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import LoginForm from "./Login";
 import { loginUser } from "../actions/shared";
 
-class NewQuestion extends Component {
+class NewQuestionPage extends Component {
   render() {
     return (
       <div className="center">
@@ -37,4 +37,4 @@ function mapStateToProps({ authedUser }) {
   };
 }
 
-export default connect(mapStateToProps)(NewQuestion);
+export default connect(mapStateToProps)(NewQuestionPage);
