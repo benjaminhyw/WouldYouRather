@@ -24,3 +24,9 @@ export function formatUser(user, authedUser) {
     avatar: avatarURL
   };
 }
+
+export function formatUserIdsDropdown(userIds) {
+  return userIds.map(userId => {
+    return { key: userId, text: userId };
+  });
+}

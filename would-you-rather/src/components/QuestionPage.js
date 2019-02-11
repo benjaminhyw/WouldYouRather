@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
-import { Link } from "react-router-dom";
+import LoginForm from "./Login";
+import { loginUser } from "../actions/shared";
 
 class QuestionPage extends Component {
   render() {
-    return <Question id={this.props.id} questionDisplay={QuestionPoll} />;
+    return (
+      <div>
+        {!this.props.authedUser ? (
+          <LoginForm onSubmit={this.submit} />
+        ) : (
+          <Question id={this.props.id} questionDisplay={QuestionPoll} />
+        )}
+      </div>
+    );
   }
+
+  submit = event => {
+    this.props.dispatch(loginUser(event.userId));
+  };
 }
 
 function QuestionPoll(question) {
@@ -29,7 +42,8 @@ function mapStateToProps({ authedUser, questions, users }, props) {
   const { id } = props.match.params;
 
   return {
-    id
+    id,
+    authedUser
   };
 }
 
