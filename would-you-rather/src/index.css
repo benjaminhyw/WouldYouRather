@@ -57,6 +57,7 @@ li {
   height: 100px;
   border-radius: 50%;
   margin: 15px 40px;
+  align-self: center;
 }
 
 .flexbox {
@@ -74,7 +75,14 @@ li {
   font-size: 120%;
 }
 
-.questionList{
+.voteHeader {
+  background-color: rgba(8, 206, 163, 0.5);
+  padding: 10px;
+  margin: none;
+  font-size: 120%;
+}
+
+.questionList {
   width: 100%;
   max-width: 690px;
   margin: 0 auto;
@@ -82,7 +90,7 @@ li {
   border-radius: 3px;
 }
 
-.questionListTabs{
+.questionListTabs {
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -102,6 +110,18 @@ li {
   border-radius: 3px;
 }
 
+.resultsWrapper {
+  width: 100%;
+  max-width: 290px;
+}
+
+.result {
+  margin: 15px auto;
+  padding: 10px;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}
+
 .divider {
   margin: 10px auto;
   border: 1px solid rgba(128, 128, 128, 0.2);
@@ -116,6 +136,5 @@ li {
 }
 
 .loginField {
-  padding: 5px 10px
+  padding: 5px 10px;
 }
-
