@@ -7,24 +7,30 @@ class NewQuestionForm extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <div className="center login">
+      <div className="center createNewQuestion">
         <h3>Create New Question</h3>
+        <div>Would you rather ...</div>
         <form onSubmit={handleSubmit}>
-          <div className="loginField">
+          <div className="inputField">
             <Field
               name="optionOne"
               placeholder="Type first option"
-              component="text"
-              type="text"
+              component="input"
+              type="input"
               autoFocus
             />
+          </div>
+          <div>OR</div>
+          <div>
             <Field
               name="optionTwo"
               placeholder="Type second option"
-              component="text"
-              type="text"
+              component="input"
+              type="input"
               autoFocus
             />
+          </div>
+          <div>
             <button type="submit">Submit</button>
           </div>
         </form>

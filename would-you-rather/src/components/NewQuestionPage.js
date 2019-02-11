@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoginForm from "./LoginForm";
 import { loginUser } from "../actions/shared";
+import NewQuestionForm from "../components/NewQuestionForm";
 
 class NewQuestionPage extends Component {
   render() {
@@ -10,17 +11,7 @@ class NewQuestionPage extends Component {
         {!this.props.authedUser ? (
           <LoginForm onSubmit={this.submit} />
         ) : (
-          <div>
-            <h3 className="center">Create New Question</h3>
-            <div>Would you rather ...</div>
-            <form>
-              <input />
-              <div>OR</div>
-              <input />
-              <br />
-              <button>Submit</button>
-            </form>
-          </div>
+          <NewQuestionForm />
         )}
       </div>
     );
