@@ -9,7 +9,7 @@ class Home extends Component {
     return (
       <div className="center">
         {!this.props.authedUser ? (
-          <LoginForm />
+          <LoginForm onSubmit={this.submit} />
         ) : (
           <div>
             <h3>Home</h3>
@@ -36,6 +36,10 @@ class Home extends Component {
       </div>
     );
   }
+
+  submit = event => {
+    console.log(event);
+  };
 }
 
 function QuestionSnippet(question) {
