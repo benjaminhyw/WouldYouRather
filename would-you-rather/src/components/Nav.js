@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { logoutUser } from "../actions/shared";
 
 class Nav extends Component {
   render() {
@@ -26,11 +27,11 @@ class Nav extends Component {
         <ul>
           {this.props.authedUser && (
             <div className="flexbox">
-              <li>Hello, {this.props.authedUser}</li>
+              <li>Hello, {this.props.users[this.props.authedUser].name}</li>
               <li>
-                <NavLink to="/" exact activeClassName="active">
+                <Link to="/" onClick={this.logout}>
                   Logout
-                </NavLink>
+                </Link>
               </li>
             </div>
           )}
@@ -38,11 +39,16 @@ class Nav extends Component {
       </nav>
     );
   }
+
+  logout() {
+    this.props.dispatch(logoutUser);
+  }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    authedUser
+    authedUser,
+    users
   };
 }
 
