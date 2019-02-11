@@ -40,7 +40,6 @@ class Home extends Component {
   }
 
   render() {
-    // sort both variables down below individually
     let answeredQuestionIds = this.props.answeredQuestionIds;
     answeredQuestionIds &&
       (answeredQuestionIds = this.timestampSort(answeredQuestionIds));
@@ -52,6 +51,8 @@ class Home extends Component {
           1
         );
       });
+    unansweredQuestionIds &&
+      (unansweredQuestionIds = this.timestampSort(unansweredQuestionIds));
 
     return (
       <div className="center">
@@ -85,11 +86,11 @@ class Home extends Component {
               </div>
               <ul>
                 {this.state.unansweredTabIsActive &&
-                  unansweredQuestionIds.map(questionId => {
+                  unansweredQuestionIds.map(question => {
                     return (
-                      <li key={questionId}>
+                      <li key={question.id}>
                         <Question
-                          id={questionId}
+                          id={question.id}
                           questionDisplay={QuestionSnippet}
                         />
                       </li>
