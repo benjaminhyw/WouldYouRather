@@ -25,6 +25,17 @@ export function formatUser(user, authedUser) {
   };
 }
 
+function generateUID() {
+  return (
+    Math.random()
+      .toString(36)
+      .substring(2, 15) +
+    Math.random()
+      .toString(36)
+      .substring(2, 15)
+  );
+}
+
 export function formatUserIdsDropdown(userIds) {
   return userIds.map(userId => {
     return { key: userId, text: userId };
