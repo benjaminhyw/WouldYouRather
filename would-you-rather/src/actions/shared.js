@@ -1,7 +1,7 @@
 import { getInitialData } from "../utils/api";
 import { setAuthedUser, logout } from "../actions/authedUser";
 import { receiveUsers } from "../actions/users";
-import { receiveQuestions, createQuestion } from "../actions/questions";
+import { receiveQuestions, handleCreateQuestion } from "../actions/questions";
 
 export function handleInitialData() {
   return dispatch => {
@@ -26,6 +26,6 @@ export function logoutUser() {
 
 export function submitNewQuestion(question) {
   return dispatch => {
-    return dispatch(createQuestion(question));
+    return dispatch(handleCreateQuestion(question));
   };
 }
