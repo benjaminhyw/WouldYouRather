@@ -16,6 +16,7 @@ class LoginForm extends Component {
               placeholder="Select User"
               component="select"
               type="select"
+              autoFocus
             >
               {this.props.userIds.map(option => {
                 return <option key={option}>{option}</option>;
