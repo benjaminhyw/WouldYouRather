@@ -25,7 +25,7 @@ export function formatUser(user, authedUser) {
   };
 }
 
-function generateUID() {
+export function generateUID() {
   return (
     Math.random()
       .toString(36)
