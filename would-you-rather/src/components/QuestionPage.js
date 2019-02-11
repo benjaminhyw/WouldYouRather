@@ -30,7 +30,7 @@ function QuestionDisplay(question) {
   let userObj = this.props.users[this.props.authedUser];
 
   return (
-    <div>
+    <div className="resultsWrapper">
       {userObj.answers[question.id]
         ? QuestionResults(question)
         : QuestionPoll(question)}
@@ -69,7 +69,7 @@ function QuestionResults(question) {
 
 function singleQuestionResult(questionOption, totalVotes) {
   return (
-    <div>
+    <div className="result">
       <div>{questionOption.text}</div>
       <div>
         <div>
