@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import User from "./User";
-import LoginForm from "./Login";
+import LoginForm from "./LoginForm";
 import { loginUser } from "../actions/shared";
 
 class Leaderboard extends Component {

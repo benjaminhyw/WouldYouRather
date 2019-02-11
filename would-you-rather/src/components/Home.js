@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import LoginForm from "./Login";
+import LoginForm from "./LoginForm";
 import Question from "./Question";
 import { Link } from "react-router-dom";
 import { loginUser } from "../actions/shared";

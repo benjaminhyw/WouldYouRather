@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
-import LoginForm from "./Login";
+import LoginForm from "./LoginForm";
 import { loginUser } from "../actions/shared";
 
 class QuestionPage extends Component {
