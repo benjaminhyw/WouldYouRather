@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import LoginForm from "./Login";
 import Question from "./Question";
 import { Link } from "react-router-dom";
+import { loginUser } from "../actions/shared";
 
 class Home extends Component {
   render() {
@@ -38,7 +39,7 @@ class Home extends Component {
   }
 
   submit = event => {
-    console.log(event);
+    this.props.dispatch(loginUser(event.userId));
   };
 }
 
