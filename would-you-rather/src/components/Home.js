@@ -8,23 +8,31 @@ class Home extends Component {
   render() {
     return (
       <div className="center">
-        <h3>Home</h3>
-        <div>
+        {!this.props.authedUser ? (
+          <Login />
+        ) : (
           <div>
-            <div>Unanswered</div>
-            <div>Answered</div>
+            <h3>Home</h3>
+            <div>
+              <div>
+                <div>Unanswered</div>
+                <div>Answered</div>
+              </div>
+              <ul>
+                {this.props.questionIds.map(questionId => {
+                  return (
+                    <li key={questionId}>
+                      <Question
+                        id={questionId}
+                        questionDisplay={QuestionSnippet}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </div>
-          <ul>
-            {this.props.questionIds.map(questionId => {
-              return (
-                <li key={questionId}>
-                  <Question id={questionId} questionDisplay={QuestionSnippet} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <Login />
+        )}
       </div>
     );
   }
@@ -42,10 +50,11 @@ function QuestionSnippet(question) {
   );
 }
 
-function mapStateToProps({ users, questions }) {
+function mapStateToProps({ users, questions, authedUser }) {
   return {
     userIds: Object.keys(users),
-    questionIds: Object.keys(questions)
+    questionIds: Object.keys(questions),
+    authedUser
   };
 }
 
