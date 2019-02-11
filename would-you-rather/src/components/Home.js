@@ -6,17 +6,26 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../actions/shared";
 
 class Home extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       unansweredTabIsActive: true
-    }
+    };
     this.activateUnansweredTab = this.activateUnansweredTab.bind(this);
     this.activateAnsweredTab = this.activateAnsweredTab.bind(this);
   }
 
   render() {
+    let answeredQuestionIds = this.props.answeredQuestionIds;
+    let unansweredQuestionIds = [...this.props.questionIds];
+    answeredQuestionIds &&
+      answeredQuestionIds.forEach(answeredQuestionId => {
+        unansweredQuestionIds.splice(
+          unansweredQuestionIds.indexOf(answeredQuestionId),
+          1
+        );
+      });
+
     return (
       <div className="center">
         {!this.props.authedUser ? (
@@ -26,20 +35,50 @@ class Home extends Component {
             <h3>Home</h3>
             <div className="questionList">
               <div className="questionListTabs">
-                <div className={this.state.unansweredTabIsActive ? "questionListActiveTab" : ""} onClick={this.activateUnansweredTab}>Unanswered</div>
-                <div className={this.state.unansweredTabIsActive ? "" : "questionListActiveTab"} onClick={this.activateAnsweredTab}>Answered</div>
+                <div
+                  className={
+                    this.state.unansweredTabIsActive
+                      ? "questionListActiveTab"
+                      : ""
+                  }
+                  onClick={this.activateUnansweredTab}
+                >
+                  Unanswered
+                </div>
+                <div
+                  className={
+                    this.state.unansweredTabIsActive
+                      ? ""
+                      : "questionListActiveTab"
+                  }
+                  onClick={this.activateAnsweredTab}
+                >
+                  Answered
+                </div>
               </div>
               <ul>
-                {this.props.questionIds.map(questionId => {
-                  return (
-                    <li key={questionId}>
-                      <Question
-                        id={questionId}
-                        questionDisplay={QuestionSnippet}
-                      />
-                    </li>
-                  );
-                })}
+                {this.state.unansweredTabIsActive &&
+                  unansweredQuestionIds.map(questionId => {
+                    return (
+                      <li key={questionId}>
+                        <Question
+                          id={questionId}
+                          questionDisplay={QuestionSnippet}
+                        />
+                      </li>
+                    );
+                  })}
+                {!this.state.unansweredTabIsActive &&
+                  this.props.answeredQuestionIds.map(questionId => {
+                    return (
+                      <li key={questionId}>
+                        <Question
+                          id={questionId}
+                          questionDisplay={QuestionSnippet}
+                        />
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
           </div>
@@ -51,13 +90,13 @@ class Home extends Component {
   activateUnansweredTab() {
     this.setState({
       unansweredTabIsActive: true
-    })
+    });
   }
 
   activateAnsweredTab() {
     this.setState({
       unansweredTabIsActive: false
-    })
+    });
   }
 
   submit = event => {
@@ -79,6 +118,9 @@ function QuestionSnippet(question) {
 
 function mapStateToProps({ users, questions, authedUser }) {
   return {
+    users,
+    answeredQuestionIds:
+      users[authedUser] && Object.keys(users[authedUser].answers),
     userIds: Object.keys(users),
     questionIds: Object.keys(questions),
     authedUser
