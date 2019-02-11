@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
-import { Dropdown } from "office-ui-fabric-react";
-import { formatUserIdsDropdown } from "../utils/helpers";
 
 class LoginForm extends Component {
   render() {
-    const { handleSubmit } = this.props; // might change to locally defined
+    const { handleSubmit } = this.props;
 
     return (
       <div className="center login">
@@ -16,10 +14,14 @@ class LoginForm extends Component {
             <Field
               name="userId"
               placeholder="Select User"
-              component={Dropdown}
-              options={this.props.userIds}
-            />
-            <button>Submit</button>
+              component="select"
+              type="select"
+            >
+              {this.props.userIds.map(option => {
+                return <option key={option}>{option}</option>;
+              })}
+            </Field>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -33,7 +35,7 @@ LoginForm = reduxForm({
 
 function mapStateToProps({ users }) {
   return {
-    userIds: formatUserIdsDropdown(Object.keys(users))
+    userIds: Object.keys(users)
   };
 }
 
