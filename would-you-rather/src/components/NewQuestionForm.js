@@ -1,0 +1,46 @@
+import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+
+class NewQuestionForm extends Component {
+  render() {
+    const { handleSubmit } = this.props;
+
+    return (
+      <div className="center login">
+        <h3>Create New Question</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="loginField">
+            <Field
+              name="optionOne"
+              placeholder="Type first option"
+              component="text"
+              type="text"
+              autoFocus
+            />
+            <Field
+              name="optionTwo"
+              placeholder="Type second option"
+              component="text"
+              type="text"
+              autoFocus
+            />
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
+
+NewQuestionForm = reduxForm({
+  form: "newQuestion"
+})(NewQuestionForm);
+
+function mapStateToProps({ users }) {
+  return {
+    userIds: Object.keys(users)
+  };
+}
+
+export default connect(mapStateToProps)(NewQuestionForm);
