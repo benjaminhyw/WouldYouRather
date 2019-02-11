@@ -35,6 +35,10 @@ code {
   padding-left: 0;
 }
 
+.active {
+  font-weight: bold;
+}
+
 ul {
   padding-left: 0;
 }
