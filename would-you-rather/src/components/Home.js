@@ -15,8 +15,35 @@ class Home extends Component {
     this.activateAnsweredTab = this.activateAnsweredTab.bind(this);
   }
 
+  timestampSort(questionIdsArr) {
+    let sortedArr = questionIdsArr.map(questionId => {
+      return this.props.questions[questionId];
+    });
+
+    sortedArr.sort(this.compare);
+
+    console.log(sortedArr);
+    return sortedArr;
+  }
+
+  compare(a, b) {
+    const timestampA = a.timestamp;
+    const timestampB = b.timestamp;
+
+    let comparison = 0;
+    if (timestampA > timestampB) {
+      comparison = 1;
+    } else if (timestampA < timestampB) {
+      comparison = -1;
+    }
+    return comparison * -1;
+  }
+
   render() {
+    // sort both variables down below individually
     let answeredQuestionIds = this.props.answeredQuestionIds;
+    answeredQuestionIds &&
+      (answeredQuestionIds = this.timestampSort(answeredQuestionIds));
     let unansweredQuestionIds = [...this.props.questionIds];
     answeredQuestionIds &&
       answeredQuestionIds.forEach(answeredQuestionId => {
@@ -69,11 +96,11 @@ class Home extends Component {
                     );
                   })}
                 {!this.state.unansweredTabIsActive &&
-                  this.props.answeredQuestionIds.map(questionId => {
+                  answeredQuestionIds.map(question => {
                     return (
-                      <li key={questionId}>
+                      <li key={question.id}>
                         <Question
-                          id={questionId}
+                          id={question.id}
                           questionDisplay={QuestionSnippet}
                         />
                       </li>
@@ -123,7 +150,8 @@ function mapStateToProps({ users, questions, authedUser }) {
       users[authedUser] && Object.keys(users[authedUser].answers),
     userIds: Object.keys(users),
     questionIds: Object.keys(questions),
-    authedUser
+    authedUser,
+    questions
   };
 }
 
