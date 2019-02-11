@@ -31,27 +31,62 @@ function QuestionDisplay(question) {
 
   return (
     <div>
-      <div>Would you rather...</div>
-      {userObj.answers[question.id] ? (
-        <p>You've answered this!</p>
-      ) : (
-        QuestionPoll(question)
-      )}
+      {userObj.answers[question.id]
+        ? QuestionResults(question)
+        : QuestionPoll(question)}
     </div>
   );
 }
 
 function QuestionPoll(question) {
   return (
-    <form>
-      <input type="radio" value={question.optionOne.text} />
-      {question.optionOne.text}
-      <br />
-      <input type="radio" value={question.optionTwo.text} />
-      {question.optionTwo.text} <br />
-      <button className="btn">Submit</button>
-    </form>
+    <div>
+      <div>Would you rather...</div>
+      <form>
+        <input type="radio" value={question.optionOne.text} />
+        {question.optionOne.text}
+        <br />
+        <input type="radio" value={question.optionTwo.text} />
+        {question.optionTwo.text} <br />
+        <button className="btn">Submit</button>
+      </form>
+    </div>
   );
+}
+
+function QuestionResults(question) {
+  console.log(question);
+  let totalVotes =
+    question.optionOne.votes.length + question.optionTwo.votes.length;
+  return (
+    <div>
+      <h3>Results:</h3>
+      <div>
+        <div>{question.optionOne.text}</div>
+        <div>
+          <div>
+            {calculatePercentage(question.optionOne.votes.length, totalVotes)}
+          </div>
+          <div>
+            {question.optionOne.votes.length} out of {totalVotes} votes
+          </div>
+        </div>
+      </div>
+      <div>{question.optionTwo.text}</div>
+      <div>
+        <div>
+          {calculatePercentage(question.optionTwo.votes.length, totalVotes)}
+        </div>
+        <div>
+          {question.optionTwo.votes.length} out of {totalVotes}votes
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function calculatePercentage(optionVotes, totalVotes) {
+  return ((optionVotes / totalVotes) * 100).toFixed(3).toString() + "%";
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
