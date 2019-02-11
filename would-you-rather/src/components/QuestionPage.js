@@ -11,7 +11,7 @@ class QuestionPage extends Component {
         {!this.props.authedUser ? (
           <LoginForm onSubmit={this.submit} />
         ) : (
-          <Question id={this.props.id} questionDisplay={QuestionPoll} />
+          <Question id={this.props.id} questionDisplay={QuestionDisplay} />
         )}
       </div>
     );
@@ -22,7 +22,11 @@ class QuestionPage extends Component {
   };
 }
 
-function QuestionPoll(question) {
+function QuestionDisplay(question) {
+  return <div>{UnansweredQuestion(question)}</div>;
+}
+
+function UnansweredQuestion(question) {
   return (
     <div>
       <div>Would you rather...</div>
@@ -43,7 +47,8 @@ function mapStateToProps({ authedUser, questions, users }, props) {
 
   return {
     id,
-    authedUser
+    authedUser,
+    users
   };
 }
 

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import LoginForm from "./Login";
 import Question from "./Question";
 import { Link } from "react-router-dom";
-import { loginUser } from "../actions/shared";
+import { loginUser, SetUserQuestionDetails } from "../actions/shared";
 
 class Home extends Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class Home extends Component {
     this.state = {
       unansweredTabIsActive: true
     };
+    this.submit = this.submit.bind(this);
     this.activateUnansweredTab = this.activateUnansweredTab.bind(this);
     this.activateAnsweredTab = this.activateAnsweredTab.bind(this);
   }
@@ -101,6 +102,12 @@ class Home extends Component {
 
   submit = event => {
     this.props.dispatch(loginUser(event.userId));
+    this.props.dispatch(
+      SetUserQuestionDetails({
+        answeredQuestions: this.props.answeredQuestions,
+        unansweredQuestions: this.props.unansweredQuestions
+      })
+    );
   };
 }
 
