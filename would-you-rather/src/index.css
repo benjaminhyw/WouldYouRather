@@ -71,7 +71,8 @@ li {
 }
 
 .question,
-.user {
+.user,
+.login {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;
@@ -90,4 +91,8 @@ li {
   align-self: center;
   width: 100%;
   height: 100%;
+}
+
+.loginField {
+  padding: 5px 10px;
 }
