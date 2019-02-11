@@ -75,6 +75,13 @@ li {
   font-size: 120%;
 }
 
+.voteHeader {
+  background-color: rgba(8, 206, 163, 0.5);
+  padding: 10px;
+  margin: none;
+  font-size: 120%;
+}
+
 .questionList {
   width: 100%;
   max-width: 690px;

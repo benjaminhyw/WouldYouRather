@@ -32,7 +32,7 @@ function QuestionDisplay(question) {
   return (
     <div className="resultsWrapper">
       {userObj.answers[question.id]
-        ? QuestionResults(question)
+        ? QuestionResults(question, userObj)
         : QuestionPoll(question)}
     </div>
   );
@@ -54,22 +54,27 @@ function QuestionPoll(question) {
   );
 }
 
-function QuestionResults(question) {
-  console.log(question);
+function QuestionResults(question, userObj) {
   let totalVotes =
     question.optionOne.votes.length + question.optionTwo.votes.length;
   return (
     <div>
       <h3>Results:</h3>
-      {singleQuestionResult(question.optionOne, totalVotes)}
-      {singleQuestionResult(question.optionTwo, totalVotes)}
+      {singleQuestionResult(question.optionOne, totalVotes, userObj)}
+      {singleQuestionResult(question.optionTwo, totalVotes, userObj)}
     </div>
   );
 }
 
-function singleQuestionResult(questionOption, totalVotes) {
+function singleQuestionResult(questionOption, totalVotes, userObj) {
   return (
     <div className="result">
+      {questionOption.votes.includes(userObj.id) ? (
+        <div className="voteHeader">YOUR VOTE</div>
+      ) : (
+        ""
+      )}
+
       <div>{questionOption.text}</div>
       <div>
         <div>
