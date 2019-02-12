@@ -29,8 +29,6 @@ export function handleUpdateUser(response, questionId) {
       formattedUser.answers[questionId] = "optionTwo";
     }
 
-    formattedUser.answers[questionId] = response.radioOption;
-
     dispatch(updateUser(formattedUser, questionId));
   };
 }
