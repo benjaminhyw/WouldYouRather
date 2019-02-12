@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
 import LoginForm from "./LoginForm";
+import QuestionForm from "./QuestionForm";
 import { loginUser } from "../actions/shared";
 
 class QuestionPage extends Component {
@@ -41,15 +42,7 @@ function QuestionDisplay(question) {
 function QuestionPoll(question) {
   return (
     <div>
-      <div>Would you rather...</div>
-      <form>
-        <input type="radio" value={question.optionOne.text} />
-        {question.optionOne.text}
-        <br />
-        <input type="radio" value={question.optionTwo.text} />
-        {question.optionTwo.text} <br />
-        <button className="btn">Submit</button>
-      </form>
+      <QuestionForm question={question} />
     </div>
   );
 }
