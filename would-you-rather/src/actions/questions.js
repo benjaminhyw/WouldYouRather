@@ -2,6 +2,7 @@ import { generateUID } from "../utils/helpers";
 
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const CREATE_QUESTION = "CREATE_QUESTION";
+export const UPDATE_QUESTION = "UPDATE_QUESTION";
 
 export function receiveQuestions(questions) {
   return {
@@ -14,6 +15,13 @@ export function createQuestion(question) {
   return {
     type: CREATE_QUESTION,
     question
+  };
+}
+
+export function updateQuestion(response) {
+  return {
+    type: UPDATE_QUESTION,
+    response
   };
 }
 
