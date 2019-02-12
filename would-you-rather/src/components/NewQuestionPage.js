@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router";
 import LoginForm from "./LoginForm";
 import { loginUser, submitNewQuestion } from "../actions/shared";
 import NewQuestionForm from "../components/NewQuestionForm";
 
 class NewQuestionPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      redirectHome: false
+    };
+  }
+
   render() {
+    if (this.state.redirectHome) {
+      return <Redirect to="/" />;
+    }
     return (
       <div className="center">
         {!this.props.authedUser ? (
@@ -23,6 +34,7 @@ class NewQuestionPage extends Component {
 
   submitNewQuestion = event => {
     this.props.dispatch(submitNewQuestion(event));
+    this.setState({ redirectHome: true });
   };
 }
 
