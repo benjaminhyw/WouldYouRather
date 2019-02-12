@@ -9,22 +9,24 @@ class LoginForm extends Component {
     return (
       <div className="center login">
         <h3>Login</h3>
-        <form onSubmit={handleSubmit}>
-          <div className="loginField">
-            <Field
-              name="userId"
-              placeholder="Select User"
-              component="select"
-              type="select"
-              autoFocus
-            >
-              {this.props.userIds.map(option => {
-                return <option key={option}>{option}</option>;
-              })}
-            </Field>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
+        {this.props.userIds.length > 0 && (
+          <form onSubmit={handleSubmit}>
+            <div className="loginField">
+              <Field
+                name="userId"
+                placeholder="Select User"
+                component="select"
+                type="select"
+                autoFocus
+              >
+                {this.props.userIds.map(option => {
+                  return <option key={option}>{option}</option>;
+                })}
+              </Field>
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        )}
       </div>
     );
   }
