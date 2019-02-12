@@ -29,7 +29,6 @@ export function handleUpdateQuestion(response, questionId) {
     } else if (formattedQuestion.optionTwo.text === response.radioOption) {
       formattedQuestion.optionTwo.votes.push(authedUser);
     }
-    console.log(formattedQuestion);
 
     dispatch(updateQuestion(formattedQuestion, questionId));
   };
