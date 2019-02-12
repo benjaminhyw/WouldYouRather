@@ -53,7 +53,7 @@ function QuestionDisplay(question) {
 
   return (
     <div className="resultsWrapper">
-      {userObj.answers[question.id]
+      {userObj && userObj.answers[question.id]
         ? QuestionResults(question, userObj)
         : QuestionPoll(question)}
     </div>
