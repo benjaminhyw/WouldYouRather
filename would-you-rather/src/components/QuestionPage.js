@@ -3,12 +3,13 @@ import { connect } from "react-redux";
 import Question from "./Question";
 import LoginForm from "./LoginForm";
 import QuestionForm from "./QuestionForm";
-import { loginUser } from "../actions/shared";
+import { loginUser, updateQuestionViaResponse } from "../actions/shared";
 
 class QuestionPage extends Component {
   constructor(props) {
     super(props);
     QuestionDisplay = QuestionDisplay.bind(this);
+    QuestionPoll = QuestionPoll.bind(this);
   }
 
   render() {
@@ -23,10 +24,15 @@ class QuestionPage extends Component {
     );
   }
 
-  submitLogin = event => {
-    this.props.dispatch(loginUser(event.userId));
+  submitLogin = user => {
+    this.props.dispatch(loginUser(user.userId));
+  };
+
+  submitQuestionResponse = response => {
+    this.props.dispatch(updateQuestionViaResponse(response));
   };
 }
+
 function QuestionDisplay(question) {
   let userObj = this.props.users[this.props.authedUser];
 
@@ -42,7 +48,10 @@ function QuestionDisplay(question) {
 function QuestionPoll(question) {
   return (
     <div>
-      <QuestionForm question={question} />
+      <QuestionForm
+        question={question}
+        onSubmit={this.submitQuestionResponse}
+      />
     </div>
   );
 }
@@ -82,7 +91,7 @@ function singleQuestionResult(questionOption, totalVotes, userObj) {
 }
 
 function calculatePercentage(optionVotes, totalVotes) {
-  return ((optionVotes / totalVotes) * 100).toFixed(3).toString() + "%";
+  return ((optionVotes / totalVotes) * 100).toFixed(2).toString() + "%";
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
