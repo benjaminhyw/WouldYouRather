@@ -22,7 +22,6 @@ class Home extends Component {
 
     sortedArr.sort(this.compare);
 
-    console.log(sortedArr);
     return sortedArr;
   }
 

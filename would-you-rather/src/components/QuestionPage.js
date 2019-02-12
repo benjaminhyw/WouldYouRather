@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Question from "./Question";
 import LoginForm from "./LoginForm";
-import { loginUser } from "../actions/shared";
+import QuestionForm from "./QuestionForm";
+import {
+  loginUser,
+  updateQuestionViaResponse,
+  updateUserViaResponse
+} from "../actions/shared";
 
 class QuestionPage extends Component {
   constructor(props) {
     super(props);
     QuestionDisplay = QuestionDisplay.bind(this);
+    QuestionPoll = QuestionPoll.bind(this);
   }
 
   render() {
@@ -16,16 +22,32 @@ class QuestionPage extends Component {
         {!this.props.authedUser ? (
           <LoginForm onSubmit={this.submitLogin} />
         ) : (
-          <Question id={this.props.id} questionDisplay={QuestionDisplay} />
+          <Question
+            id={window.location.pathname.split("/").pop()}
+            questionDisplay={QuestionDisplay}
+          />
         )}
       </div>
     );
   }
 
-  submitLogin = event => {
-    this.props.dispatch(loginUser(event.userId));
+  submitLogin = user => {
+    this.props.dispatch(loginUser(user.userId));
+  };
+
+  submitQuestionResponse = response => {
+    this.props.dispatch(
+      updateUserViaResponse(response, window.location.pathname.split("/").pop())
+    );
+    this.props.dispatch(
+      updateQuestionViaResponse(
+        response,
+        window.location.pathname.split("/").pop()
+      )
+    );
   };
 }
+
 function QuestionDisplay(question) {
   let userObj = this.props.users[this.props.authedUser];
 
@@ -41,15 +63,10 @@ function QuestionDisplay(question) {
 function QuestionPoll(question) {
   return (
     <div>
-      <div>Would you rather...</div>
-      <form>
-        <input type="radio" value={question.optionOne.text} />
-        {question.optionOne.text}
-        <br />
-        <input type="radio" value={question.optionTwo.text} />
-        {question.optionTwo.text} <br />
-        <button className="btn">Submit</button>
-      </form>
+      <QuestionForm
+        question={question}
+        onSubmit={this.submitQuestionResponse}
+      />
     </div>
   );
 }
@@ -89,7 +106,7 @@ function singleQuestionResult(questionOption, totalVotes, userObj) {
 }
 
 function calculatePercentage(optionVotes, totalVotes) {
-  return ((optionVotes / totalVotes) * 100).toFixed(3).toString() + "%";
+  return ((optionVotes / totalVotes) * 100).toFixed(2).toString() + "%";
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
