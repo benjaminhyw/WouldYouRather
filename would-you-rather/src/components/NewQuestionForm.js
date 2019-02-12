@@ -17,6 +17,7 @@ class NewQuestionForm extends Component {
               placeholder="Type first option"
               component="input"
               type="input"
+              required
             />
           </div>
           <div>OR</div>
@@ -26,6 +27,7 @@ class NewQuestionForm extends Component {
               placeholder="Type second option"
               component="input"
               type="input"
+              required
             />
           </div>
           <div>
