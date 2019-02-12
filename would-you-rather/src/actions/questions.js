@@ -23,6 +23,7 @@ export function handleUpdateQuestion(response, questionId) {
   return (dispatch, getState) => {
     const { questions, authedUser } = getState();
     let formattedQuestion = questions[questionId];
+    formattedQuestion.timestamp = Date.now();
 
     if (formattedQuestion.optionOne.text === response.radioOption) {
       formattedQuestion.optionOne.votes.push(authedUser);
