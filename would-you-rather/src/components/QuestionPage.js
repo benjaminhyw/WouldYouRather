@@ -22,7 +22,10 @@ class QuestionPage extends Component {
         {!this.props.authedUser ? (
           <LoginForm onSubmit={this.submitLogin} />
         ) : (
-          <Question id={this.props.id} questionDisplay={QuestionDisplay} />
+          <Question
+            id={window.location.pathname.split("/").pop()}
+            questionDisplay={QuestionDisplay}
+          />
         )}
       </div>
     );
@@ -33,8 +36,15 @@ class QuestionPage extends Component {
   };
 
   submitQuestionResponse = response => {
-    this.props.dispatch(updateUserViaResponse(response, this.props.id));
-    this.props.dispatch(updateQuestionViaResponse(response, this.props.id));
+    this.props.dispatch(
+      updateUserViaResponse(response, window.location.pathname.split("/").pop())
+    );
+    this.props.dispatch(
+      updateQuestionViaResponse(
+        response,
+        window.location.pathname.split("/").pop()
+      )
+    );
   };
 }
 
