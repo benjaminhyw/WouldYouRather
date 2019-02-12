@@ -96,6 +96,10 @@ li {
   width: 100%;
 }
 
+.questionListTab {
+  cursor: pointer;
+}
+
 .questionListActiveTab {
   border: 3px solid red;
 }

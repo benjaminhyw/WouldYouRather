@@ -63,8 +63,8 @@ class Home extends Component {
                 <div
                   className={
                     this.state.unansweredTabIsActive
-                      ? "questionListActiveTab"
-                      : ""
+                      ? "questionListActiveTab questionListTab"
+                      : "questionListTab"
                   }
                   onClick={this.activateUnansweredTab}
                 >
@@ -73,8 +73,8 @@ class Home extends Component {
                 <div
                   className={
                     this.state.unansweredTabIsActive
-                      ? ""
-                      : "questionListActiveTab"
+                      ? "questionListTab"
+                      : "questionListActiveTab questionListTab"
                   }
                   onClick={this.activateAnsweredTab}
                 >
