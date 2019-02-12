@@ -20,8 +20,8 @@ class User extends Component {
           <div className="divider" />
           <div>
             <div>{name}</div>
-            <div>Answered Questions: {answersLength}</div>
-            <div>Created Questions: {questionsLength}</div>
+            <div>Questions Answered : {answersLength}</div>
+            <div>Questions Asked: {questionsLength}</div>
           </div>
           <div className="divider" />
           <div>

@@ -134,7 +134,7 @@ function QuestionSnippet(question) {
     <div>
       <div>Would you rather...</div>
       <div>...{question.optionOne.text}...</div>
-      <Link to={`/questionPage/${question.id}`}>
+      <Link to={`/questions/${question.id}`}>
         <button className="btn">View Poll</button>
       </Link>
     </div>

@@ -20,7 +20,6 @@ export function handleUpdateUser(response, questionId) {
   return (dispatch, getState) => {
     const { users, authedUser, questions } = getState();
     let formattedUser = users[authedUser];
-    formattedUser.questions.push(questionId);
 
     let question = questions[questionId];
 
