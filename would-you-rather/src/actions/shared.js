@@ -4,7 +4,7 @@ import { receiveUsers } from "../actions/users";
 import {
   receiveQuestions,
   handleCreateQuestion,
-  updateQuestion
+  handleUpdateQuestion
 } from "../actions/questions";
 
 export function handleInitialData() {
@@ -34,8 +34,8 @@ export function submitNewQuestion(question) {
   };
 }
 
-export function updateQuestionViaResponse(response) {
+export function updateQuestionViaResponse(response, questionId) {
   return dispatch => {
-    return dispatch(updateQuestion(response));
+    return dispatch(handleUpdateQuestion(response, questionId));
   };
 }

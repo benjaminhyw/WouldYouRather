@@ -11,17 +11,34 @@ export function receiveQuestions(questions) {
   };
 }
 
+export function updateQuestion(formattedQuestion, questionId) {
+  return {
+    type: UPDATE_QUESTION,
+    formattedQuestion,
+    questionId
+  };
+}
+
+export function handleUpdateQuestion(response, questionId) {
+  return (dispatch, getState) => {
+    const { questions, authedUser } = getState();
+    let formattedQuestion = questions[questionId];
+
+    if (formattedQuestion.optionOne.text === response.radioOption) {
+      formattedQuestion.optionOne.votes.push(authedUser);
+    } else if (formattedQuestion.optionTwo.text === response.radioOption) {
+      formattedQuestion.optionTwo.votes.push(authedUser);
+    }
+    console.log(formattedQuestion);
+
+    dispatch(updateQuestion(formattedQuestion, questionId));
+  };
+}
+
 export function createQuestion(question) {
   return {
     type: CREATE_QUESTION,
     question
-  };
-}
-
-export function updateQuestion(response) {
-  return {
-    type: UPDATE_QUESTION,
-    response
   };
 }
 

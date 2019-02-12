@@ -19,7 +19,7 @@ export default function questions(state = {}, action) {
     case UPDATE_QUESTION:
       return {
         ...state,
-        action
+        [action.questionId]: action.formattedQuestion
       };
     default:
       return state;

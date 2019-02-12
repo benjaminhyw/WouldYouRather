@@ -29,7 +29,7 @@ class QuestionPage extends Component {
   };
 
   submitQuestionResponse = response => {
-    this.props.dispatch(updateQuestionViaResponse(response));
+    this.props.dispatch(updateQuestionViaResponse(response, this.props.id));
   };
 }
 
