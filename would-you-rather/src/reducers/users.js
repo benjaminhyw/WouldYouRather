@@ -10,7 +10,7 @@ export default function users(state = {}, action) {
     case UPDATE_USER:
       return {
         ...state,
-        [action.formattedUser.answers[action.questionId]]: action.formattedUser
+        [action.formattedUser.id]: action.formattedUser
       };
     default:
       return state;
