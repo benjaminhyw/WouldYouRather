@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatQuestion } from "../utils/helpers";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import Error404 from "./Error404";
 
 class Question extends Component {
   render() {
     const { question } = this.props;
     if (!question) {
-      return <p>This question doesn't exist</p>;
+      return <Error404 />;
     }
     const { id, name, avatar, optionOne, optionTwo } = question;
     return (
