@@ -1,6 +1,6 @@
 import { getInitialData } from "../utils/api";
 import { setAuthedUser, logout } from "../actions/authedUser";
-import { receiveUsers } from "../actions/users";
+import { receiveUsers, handleUpdateUser } from "../actions/users";
 import {
   receiveQuestions,
   handleCreateQuestion,
@@ -37,5 +37,11 @@ export function submitNewQuestion(question) {
 export function updateQuestionViaResponse(response, questionId) {
   return dispatch => {
     return dispatch(handleUpdateQuestion(response, questionId));
+  };
+}
+
+export function updateUserViaResponse(response, questionId) {
+  return dispatch => {
+    return dispatch(handleUpdateUser(response, questionId));
   };
 }

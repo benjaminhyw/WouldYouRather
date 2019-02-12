@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import Question from "./Question";
 import LoginForm from "./LoginForm";
 import QuestionForm from "./QuestionForm";
-import { loginUser, updateQuestionViaResponse } from "../actions/shared";
+import {
+  loginUser,
+  updateQuestionViaResponse,
+  updateUserViaResponse
+} from "../actions/shared";
 
 class QuestionPage extends Component {
   constructor(props) {
@@ -29,6 +33,7 @@ class QuestionPage extends Component {
   };
 
   submitQuestionResponse = response => {
+    this.props.dispatch(updateUserViaResponse(response, this.props.id));
     this.props.dispatch(updateQuestionViaResponse(response, this.props.id));
   };
 }
