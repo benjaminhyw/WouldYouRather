@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import LoginForm from "./Login";
+import LoginForm from "./LoginForm";
 import Question from "./Question";
 import { Link } from "react-router-dom";
 import { loginUser } from "../actions/shared";
@@ -55,7 +55,7 @@ class Home extends Component {
     return (
       <div className="center">
         {!this.props.authedUser ? (
-          <LoginForm onSubmit={this.submit} />
+          <LoginForm onSubmit={this.submitLogin} />
         ) : (
           <div>
             <h3>Home</h3>
@@ -125,7 +125,7 @@ class Home extends Component {
     });
   }
 
-  submit = event => {
+  submitLogin = event => {
     this.props.dispatch(loginUser(event.userId));
   };
 }

@@ -102,7 +102,8 @@ li {
 
 .question,
 .user,
-.login {
+.login,
+.createNewQuestion {
   width: 100%;
   max-width: 590px;
   margin: 0 auto;
@@ -135,6 +136,7 @@ li {
   height: 100%;
 }
 
-.loginField {
+.loginField,
+.inputField {
   padding: 5px 10px;
 }
