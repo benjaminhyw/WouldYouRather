@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router";
 import LoginForm from "./LoginForm";
-import { loginUser, submitNewQuestion } from "../actions/shared";
+import {
+  loginUser,
+  submitNewQuestion,
+  updateUserViaResponse
+} from "../actions/shared";
 import NewQuestionForm from "../components/NewQuestionForm";
 
 class NewQuestionPage extends Component {
@@ -28,12 +32,15 @@ class NewQuestionPage extends Component {
     );
   }
 
-  submitLogin = event => {
-    this.props.dispatch(loginUser(event.userId));
+  submitLogin = user => {
+    this.props.dispatch(loginUser(user.userId));
   };
 
   submitNewQuestion = event => {
     this.props.dispatch(submitNewQuestion(event));
+    this.props.dispatch(
+      updateUserViaResponse(event, window.location.pathname.split("/").pop())
+    );
     this.setState({ redirectHome: true });
   };
 }

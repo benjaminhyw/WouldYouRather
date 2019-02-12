@@ -20,12 +20,13 @@ export function handleUpdateUser(response, questionId) {
   return (dispatch, getState) => {
     const { users, authedUser, questions } = getState();
     let formattedUser = users[authedUser];
+    formattedUser.questions.push(questionId);
 
     let question = questions[questionId];
 
-    if (question.optionOne.text === response.radioOption) {
+    if (question && question.optionOne.text === response.radioOption) {
       formattedUser.answers[questionId] = "optionOne";
-    } else if (question.optionTwo.text === response.radioOption) {
+    } else if (question && question.optionTwo.text === response.radioOption) {
       formattedUser.answers[questionId] = "optionTwo";
     }
 
