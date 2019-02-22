@@ -45,13 +45,7 @@ class Leaderboard extends Component {
     const scoreA = aAnswers.length + a.questions.length;
     const scoreB = bAnswers.length + b.questions.length;
 
-    let comparison = 0;
-    if (scoreA > scoreB) {
-      comparison = 1;
-    } else if (scoreA < scoreB) {
-      comparison = -1;
-    }
-    return comparison * -1;
+    return scoreB - scoreA;
   }
 
   submitLogin = event => {
