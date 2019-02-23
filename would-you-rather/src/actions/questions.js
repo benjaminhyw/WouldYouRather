@@ -1,5 +1,3 @@
-import { generateUID } from "../utils/helpers";
-
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const CREATE_QUESTION = "CREATE_QUESTION";
 export const UPDATE_QUESTION = "UPDATE_QUESTION";
@@ -42,11 +40,11 @@ export function createQuestion(question) {
   };
 }
 
-export function handleCreateQuestion(question) {
+export function handleCreateQuestion(question, questionID) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
     let formattedQuestion = {
-      id: generateUID(),
+      id: questionID,
       author: authedUser,
       optionOne: { votes: [], text: question.optionOne },
       optionTwo: { votes: [], text: question.optionTwo },

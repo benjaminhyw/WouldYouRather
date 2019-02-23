@@ -37,7 +37,11 @@ class QuestionPage extends Component {
 
   submitQuestionResponse = response => {
     this.props.dispatch(
-      updateUserViaResponse(response, window.location.pathname.split("/").pop())
+      updateUserViaResponse(
+        response,
+        window.location.pathname.split("/").pop(),
+        false
+      )
     );
     this.props.dispatch(
       updateQuestionViaResponse(

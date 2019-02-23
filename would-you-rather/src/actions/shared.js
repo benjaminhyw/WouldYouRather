@@ -28,9 +28,9 @@ export function logoutUser() {
   };
 }
 
-export function submitNewQuestion(question) {
+export function submitNewQuestion(question, questionID) {
   return dispatch => {
-    return dispatch(handleCreateQuestion(question));
+    return dispatch(handleCreateQuestion(question, questionID));
   };
 }
 
@@ -40,8 +40,8 @@ export function updateQuestionViaResponse(response, questionId) {
   };
 }
 
-export function updateUserViaResponse(response, questionId) {
+export function updateUserViaResponse(response, questionId, newQuestion) {
   return dispatch => {
-    return dispatch(handleUpdateUser(response, questionId));
+    return dispatch(handleUpdateUser(response, questionId, newQuestion));
   };
 }
