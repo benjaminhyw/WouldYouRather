@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import { logoutUser } from "../actions/shared";
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+
+    this.logout = bindActionCreators(logoutUser, this.props.dispatch);
+  }
+
   render() {
     return (
       <nav className="nav">

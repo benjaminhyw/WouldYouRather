@@ -12,7 +12,6 @@ export function handleInitialData() {
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
-      // dispatch(setAuthedUser(AUTHED_ID));
     });
   };
 }
@@ -24,13 +23,13 @@ export function loginUser(authed_id) {
 }
 export function logoutUser() {
   return dispatch => {
-    return dispatch(logout);
+    return dispatch(logout());
   };
 }
 
-export function submitNewQuestion(question) {
+export function submitNewQuestion(question, questionID) {
   return dispatch => {
-    return dispatch(handleCreateQuestion(question));
+    return dispatch(handleCreateQuestion(question, questionID));
   };
 }
 
@@ -40,8 +39,8 @@ export function updateQuestionViaResponse(response, questionId) {
   };
 }
 
-export function updateUserViaResponse(response, questionId) {
+export function updateUserViaResponse(response, questionId, newQuestion) {
   return dispatch => {
-    return dispatch(handleUpdateUser(response, questionId));
+    return dispatch(handleUpdateUser(response, questionId, newQuestion));
   };
 }
