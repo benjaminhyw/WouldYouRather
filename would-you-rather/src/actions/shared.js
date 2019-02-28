@@ -12,7 +12,6 @@ export function handleInitialData() {
     return getInitialData().then(({ users, questions }) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
-      // dispatch(setAuthedUser(AUTHED_ID));
     });
   };
 }
@@ -24,7 +23,7 @@ export function loginUser(authed_id) {
 }
 export function logoutUser() {
   return dispatch => {
-    return dispatch(logout);
+    return dispatch(logout());
   };
 }
 
